@@ -35,6 +35,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Mw|Camera") float CameraDistance = 6000.f;
 	UPROPERTY(EditAnywhere, Category = "Mw|Camera") float CameraFov = 20.f;
 
+	/** What the cat carries: fish, base, cone:plain ... None for empty paws. */
+	UPROPERTY(BlueprintReadOnly, Category = "Mw") FName Carry;
+	UPROPERTY(BlueprintReadOnly, Category = "Mw") int32 Coin = 0;
 	UPROPERTY(BlueprintReadOnly, Category = "Mw") float Stamina = 1.f;
 	UPROPERTY(BlueprintReadOnly, Category = "Mw") bool bSprinting = false;
 

@@ -1,0 +1,46 @@
+{
+ "_comment": "Cafe tunables (prototype clock.json / machines.json / shop.json). Times in real seconds; a day is realSecondsPerDay long and starts at dawn. Machines wear wearPerCycle per use; at 1.0 they jam until used again for fixSec. starting = the machines every new game begins with, on yard tiles (tx east, tz south).",
+ "realSecondsPerDay": 540,
+ "dawn": 6,
+ "shopOpen": 10,
+ "dusk": 18,
+ "fixSec": 2,
+ "wearPerCycle": 0.08,
+ "prices": {
+  "plain": 10,
+  "catnip": 16,
+  "nightberry": 20
+ },
+ "starting": [
+  {
+   "kind": "barrel",
+   "tx": -5,
+   "tz": 6
+  },
+  {
+   "kind": "churn",
+   "tx": -2,
+   "tz": 6
+  },
+  {
+   "kind": "counter",
+   "tx": 2,
+   "tz": 6
+  },
+  {
+   "kind": "topping",
+   "tx": 5,
+   "tz": 6
+  },
+  {
+   "kind": "coldbox",
+   "tx": 8,
+   "tz": 6
+  },
+  {
+   "kind": "bin",
+   "tx": -8,
+   "tz": 6
+  }
+ ]
+}

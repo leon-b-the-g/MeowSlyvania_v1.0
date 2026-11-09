@@ -1,5 +1,8 @@
 #include "MwCat.h"
 #include "Mvania.h"
+#include "MwClock.h"
+#include "MwGameMode.h"
+#include "MwMachine.h"
 #include "Camera/CameraComponent.h"
 #include "Engine/Engine.h"
 #include "Engine/LocalPlayer.h"
@@ -20,7 +23,7 @@ AMwCat::AMwCat()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-	// the camera never turns: one fixed top-down angle for cafe, map and battle
+	// the camera never turns: one fixed top-down angle for café, map and battle
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArm->SetupAttachment(RootComponent);
 	SpringArm->bDoCollisionTest = false;
@@ -114,6 +117,14 @@ void AMwCat::Tick(float DeltaTime)
 	Stamina = FMath::Clamp(Stamina, 0.f, 1.f);
 	if (Stamina <= 0.f) bSprinting = false;
 	GetCharacterMovement()->MaxWalkSpeed = (bSprinting ? SprintSpeed : Speed) * TileSize;
+
+	// shortcut: on-screen debug text is the HUD until the UMG pass
+	if (GEngine)
+	{
+		const UMwClock* Clock = GetWorld()->GetSubsystem<UMwClock>();
+		GEngine->AddOnScreenDebugMessage(2, 0.f, FColor(0xff, 0xf3, 0xdc), FString::Printf(TEXT("%s %s  |  %d coin  |  paws: %s  |  stamina %d%%"),
+			Clock ? *Clock->Clock() : TEXT(""), Clock && Clock->IsOpen() ? TEXT("OPEN") : TEXT("closed"), Coin, Carry.IsNone() ? TEXT("empty") : *Carry.ToString(), FMath::RoundToInt(Stamina * 100.f)));
+	}
 }
 
 void AMwCat::Use(const FInputActionValue&)
@@ -132,7 +143,9 @@ void AMwCat::Use(const FInputActionValue&)
 		const float Score = FVector::Dist2D(A->GetActorLocation(), Here) - 0.5f * TileSize * FVector::DotProduct(To, GetActorForwardVector());
 		if (Score < BestScore) { BestScore = Score; Best = A; }
 	}
-	const FString Msg = Best ? FString::Printf(TEXT("Use %s"), *Best->GetName()) : TEXT("Nothing to use here");
+	AMwMachine* Machine = Cast<AMwMachine>(Best);
+	const AMwGameMode* GM = GetWorld()->GetAuthGameMode<AMwGameMode>();
+	const FString Msg = Machine && GM ? Machine->Use(this, GM->Cafe) : Best ? FString::Printf(TEXT("Use %s"), *Best->GetName()) : TEXT("Nothing to use here");
 	UE_LOG(LogMvania, Log, TEXT("%s"), *Msg);
 	if (GEngine) GEngine->AddOnScreenDebugMessage(1, 1.5f, FColor(0xc0, 0x24, 0x3a), Msg);
 }

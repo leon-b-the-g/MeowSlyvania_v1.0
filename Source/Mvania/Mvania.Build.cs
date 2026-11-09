@@ -23,7 +23,7 @@ public class Mvania : ModuleRules
 			"Slate"
 		});
 
-		PrivateDependencyModuleNames.AddRange(new string[] { });
+		PrivateDependencyModuleNames.AddRange(new string[] { "Json", "JsonUtilities" });
 
 		PublicIncludePaths.AddRange(new string[] {
 			"Mvania",
