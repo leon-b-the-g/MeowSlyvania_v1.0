@@ -1,0 +1,28 @@
+{
+  "_comment": "The market cart in the forecourt, open from openHour to closeHour. Goods unlock by region (regions.json market lists). Each good's price swings daily by up to \u00b1swing/2 around base (seeded by the day, the same for everyone that day). fish goes straight into a fish barrel; the rest into your pockets.",
+  "openHour": 6,
+  "closeHour": 18,
+  "swing": 0.5,
+  "spot": {
+    "x": -8,
+    "z": 11
+  },
+  "goods": {
+    "fish": {
+      "label": "Fresh fish",
+      "base": 3
+    },
+    "catnip": {
+      "label": "Catnip sprig",
+      "base": 5
+    },
+    "nightberry": {
+      "label": "Nightberries",
+      "base": 8
+    },
+    "sprinkles": {
+      "label": "Sprinkles",
+      "base": 2
+    }
+  }
+}

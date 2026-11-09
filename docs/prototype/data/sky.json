@@ -1,0 +1,14 @@
+{
+  "_comment": "Keyframes by hour (0-24). sun = directional light colour, sky = background and ambient tint, intensity = sun strength, ambient = ambient strength.",
+  "keys": [
+    { "hour": 0,  "sun": "#7a8fd8", "sky": "#1a1230", "intensity": 0.7,  "ambient": 0.5 },
+    { "hour": 5,  "sun": "#7a8fd8", "sky": "#1a1230", "intensity": 0.7,  "ambient": 0.5 },
+    { "hour": 6,  "sun": "#ff9a8a", "sky": "#c98fb0", "intensity": 1.8,  "ambient": 0.8 },
+    { "hour": 7,  "sun": "#ffb47a", "sky": "#e9b7c9", "intensity": 2.4,  "ambient": 0.9 },
+    { "hour": 12, "sun": "#fff4d6", "sky": "#bfe6ff", "intensity": 2.6,  "ambient": 0.8 },
+    { "hour": 17, "sun": "#ffc27a", "sky": "#f3c9a6", "intensity": 2.4,  "ambient": 0.8 },
+    { "hour": 19, "sun": "#b57aff", "sky": "#6a4b8c", "intensity": 1.0,  "ambient": 0.6 },
+    { "hour": 21, "sun": "#7a8fd8", "sky": "#1a1230", "intensity": 0.7,  "ambient": 0.5 },
+    { "hour": 24, "sun": "#7a8fd8", "sky": "#1a1230", "intensity": 0.7,  "ambient": 0.5 }
+  ]
+}

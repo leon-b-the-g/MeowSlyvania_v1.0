@@ -1,0 +1,28 @@
+{
+  "_comment": "The café's production lines. Machines are placed on yard tiles in build mode (cost in coin). A servant assigned to a machine runs a cycle every cycleSec: takes `from` (from any machine holding it) and adds `makes` to the machine's stock (up to cap). Every cycle adds wear; at 1.0 the machine jams until the player fixes it (hold use for fixSec). from/makes null = hand-operated only (the sprinkle shaker tops a cone you carry, using sprinkles from your pockets), except the counter: its servant scoops a base plus the order's flavour from your pockets and serves the queue itself (no per-cat favour; only you win hearts), and hands out a cone from the cold box first when one fits. The cold box keeps up to cap things you carried (a wrong cone, a spare base) to take back later; the scrap bin throws away what you carry. The dehydrator keeps up to cap waffle cones (a full waffle stack hands you one with empty paws); wrapping a cone draws on the iron's stack, then a dehydrator. Workers (servants) walk a plan of machines like you do: cycleSec x 0.5 is their time to fish at the barrel or bake, holdSec x 2 for the rest; a machine with cycleSec 0 cannot be a direct-order station. Tier 2 (land = conquered regions needed to build): the smokehouse smokes fish, the velvet churn turns smoked fish into a velvet base (scoop it at the counter for a velvet cone), the waffle iron bakes waffles (empty paws, or a servant) and wraps a carried cone in one. Special customers order these.",
+  "fixSec": 2,
+  "_scale": "scale = drawn size (1 = one prop cell); the sprite stays on its feet.",
+  "wearPerCycle": 0.08,
+  "kinds": {
+    "barrel":  { "label": "Fish barrel",   "cost": 30,  "makes": "fish", "from": null,   "cycleSec": 6, "cap": 6, "start": 4 },
+    "churn":   { "label": "Cream churn",   "cost": 60,  "makes": "base", "from": "fish", "cycleSec": 7, "cap": 4, "start": 0 },
+    "counter": { "label": "Scoop counter", "cost": 80,  "makes": null,   "from": null,   "cycleSec": 5, "cap": 0, "start": 0, "scale": 1.2 },
+    "topping": { "label": "Sprinkle shaker", "cost": 40, "makes": null, "from": null, "cycleSec": 0, "cap": 0, "start": 0 },
+    "tipjar":  { "label": "Tip jar",       "cost": 15,  "makes": null,   "from": null,   "cycleSec": 0, "cap": 0, "start": 0, "scale": 0.5 },
+    "menuboard": { "label": "Menu board",  "cost": 25,  "makes": null,   "from": null,   "cycleSec": 0, "cap": 0, "start": 0 },
+    "coldbox": { "label": "Cold box",      "cost": 35,  "makes": null,   "from": null,   "cycleSec": 0, "cap": 4, "start": 0 },
+    "bin":     { "label": "Scrap bin",     "cost": 10,  "makes": null,   "from": null,   "cycleSec": 0, "cap": 0, "start": 0 },
+    "dehydrator": { "label": "Dehydrator", "cost": 30,  "makes": null,   "from": null,   "cycleSec": 0, "cap": 6, "start": 0 },
+    "smoker":  { "label": "Smokehouse",    "cost": 120, "makes": "smoked", "from": "fish",   "cycleSec": 8, "cap": 4, "start": 0, "land": 1 },
+    "velvet":  { "label": "Velvet churn",  "cost": 160, "makes": "velvet", "from": "smoked", "cycleSec": 9, "cap": 3, "start": 0, "land": 1 },
+    "waffle":  { "label": "Waffle iron",   "cost": 110, "makes": "waffle", "from": null,     "cycleSec": 7, "cap": 4, "start": 0, "land": 1 }
+  },
+  "starting": [
+    { "kind": "barrel", "tx": -5, "tz": 6 },
+    { "kind": "churn", "tx": -2, "tz": 6 },
+    { "kind": "counter", "tx": 2, "tz": 6 },
+    { "kind": "topping", "tx": 5, "tz": 6 },
+    { "kind": "coldbox", "tx": 8, "tz": 6 },
+    { "kind": "bin", "tx": -8, "tz": 6 }
+  ]
+}

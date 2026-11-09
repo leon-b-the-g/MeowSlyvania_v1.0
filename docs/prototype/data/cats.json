@@ -1,0 +1,24 @@
+{
+  "_comment": "Every cat in Meowsylvania. region = where it lives (regions.json); it starts visiting the shops once that region is conquered (summit cats from day one). sheet = public/assets/cat-<sheet>.png; accessory = key in accessories.json or null; fur = fallback tint when sheets are missing. Five Perfect serves and a cat joins the household as a vampire servant.",
+  "cats": [
+    { "name": "Pudding",          "region": "summit",  "sheet": "orange",  "accessory": "bow",      "fur": "#e8963c" },
+    { "name": "Biscuit",          "region": "summit",  "sheet": "grey",    "accessory": null,       "fur": "#9aa7b8" },
+    { "name": "Mochi",            "region": "summit",  "sheet": "calico",  "accessory": null,       "fur": "#f7f0ea" },
+    { "name": "Sardine",          "region": "summit",  "sheet": "tuxedo",  "accessory": "eyepatch", "fur": "#5a4a5e" },
+    { "name": "Pinecone",         "region": "woods",   "sheet": "orange",  "accessory": "horns",    "fur": "#e8963c" },
+    { "name": "Hazel",            "region": "woods",   "sheet": "calico",  "accessory": "bow",      "fur": "#f7f0ea" },
+    { "name": "Bramble",          "region": "woods",   "sheet": "grey",    "accessory": "scar",     "fur": "#9aa7b8" },
+    { "name": "Mayor Whiskerton", "region": "village", "sheet": "grey",    "accessory": "hat",      "fur": "#9aa7b8" },
+    { "name": "Clawdia",          "region": "village", "sheet": "tuxedo",  "accessory": "scar",     "fur": "#5a4a5e" },
+    { "name": "Muffin",           "region": "village", "sheet": "orange",  "accessory": null,       "fur": "#e8963c" },
+    { "name": "Barley",           "region": "fields",  "sheet": "calico",  "accessory": "hat",      "fur": "#f7f0ea" },
+    { "name": "Clover",           "region": "fields",  "sheet": "grey",    "accessory": "bow",      "fur": "#9aa7b8" },
+    { "name": "Tater",            "region": "fields",  "sheet": "orange",  "accessory": "eyepatch", "fur": "#e8963c" },
+    { "name": "Lily",             "region": "fens",    "sheet": "calico",  "accessory": null,       "fur": "#f7f0ea" },
+    { "name": "Wren",             "region": "fens",    "sheet": "tuxedo",  "accessory": "bow",      "fur": "#5a4a5e" },
+    { "name": "Mossy",            "region": "fens",    "sheet": "grey",    "accessory": "horns",    "fur": "#9aa7b8" },
+    { "name": "Captain Kipper",   "region": "harbour", "sheet": "tuxedo",  "accessory": "hat",      "fur": "#5a4a5e" },
+    { "name": "Gilly",            "region": "harbour", "sheet": "orange",  "accessory": "scar",     "fur": "#e8963c" },
+    { "name": "Salty",            "region": "harbour", "sheet": "calico",  "accessory": "eyepatch", "fur": "#f7f0ea" }
+  ]
+}

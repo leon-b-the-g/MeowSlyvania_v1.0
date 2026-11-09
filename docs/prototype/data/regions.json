@@ -1,0 +1,486 @@
+{
+  "_comment": "The mountain map, top (summit, z small) to bottom. Map coords: x -10..10, z 0..mapDepth. Each region is a band z0..z1 with a ground tile while critter-held and once conquered. Nodes: cafe (go home), battle (an outpost: rooms of the region's critters), boss (needs every battle node of the region beaten; beating it conquers the region), lot (a branch shop, buyable once the region is conquered). A region opens when the one above is conquered. secrets = hidden off the path, shown when the cat is near: chest (coin, once), patch (an ingredient, regrows daily; fish goes to a barrel), lostcat (that cat joins the household, once). patrols = critters wandering the region until it is conquered. layers (optional, else rooms fights) = the dungeon run: room kinds per layer, a door per option (battle.json); name = what the HUD calls the node. intro = said the first time the cat walks in. decor = hand-placed props (kind, x, z, active). ambient = wandering critters. arenaDecor = the camp around this region's battle arena, in room coordinates (the room is 16 x 11 round 0,0). All of these are laid out with the level editor (F2). scenery = decoration kinds scattered over the band (placeholder shapes until map sheets land). enemies/boss are keys in battle.json. market = goods the market sells once this region is yours. decor active: night, sometimes, or wild (now and then, only while the region is held). room: the look of its battle rooms: two floor tiles inside (patched), edge along the rim, out beyond; border kinds ring the rim (low kinds on the south rim so they never hide the cat), fill kinds crowd the dark beyond (dimmed by dark), decor props (sheets) stand just outside, obstacles grow inside.",
+  "mapWidth": 20,
+  "mapDepth": 68,
+  "branchPayPerStaff": 30,
+  "branchMaxStaff": 3,
+  "patrolsPerRegion": 2,
+  "revealRadius": 5,
+  "lotCost": 150,
+  "regions": [
+    {
+      "id": "summit",
+      "name": "Mount Meowtterhorn",
+      "critter": null,
+      "z": [0, 8],
+      "tiles": { "held": "flag", "won": "flag" },
+      "flag": "#c0243a",
+      "scenery": ["rock", "rock", "pine"],
+      "room": {
+        "floor": ["flag", "flagmoss"],
+        "edge": "grass",
+        "out": "grass",
+        "border": ["pine", "rock"],
+        "low": ["rock"],
+        "fill": ["pine"],
+        "decor": [],
+        "obstacles": ["rock", "stump", "pine"],
+        "dark": 0.6
+      },
+      "enemies": [],
+      "boss": null,
+      "market": ["fish", "catnip", "sprinkles"],
+      "secrets": [
+        { "id": "summit-chest", "kind": "chest", "x": -8, "z": 1.5, "coin": 25 }
+      ],
+      "nodes": [
+        { "id": "cafe", "kind": "cafe", "x": 0, "z": 4 }
+      ],
+      "decor": [
+        { "kind": "map-signpost", "x": 4.7, "z": 4.5, "active": "sometimes" }
+      ]
+    },
+    {
+      "id": "woods",
+      "name": "Pinewhisker Woods",
+      "critter": "raccoons",
+      "z": [8, 20],
+      "tiles": { "held": "roots", "won": "leaves" },
+      "flag": "#5b6075",
+      "scenery": ["map-pines", "pine", "map-pines", "oak", "stump", "rock"],
+      "room": {
+        "floor": ["leaves", "path"],
+        "edge": "grass",
+        "out": "roots",
+        "border": ["pine", "pine", "oak"],
+        "low": ["rock", "rock", "stump"],
+        "fill": ["pine", "pine", "oak"],
+        "decor": ["raccoontent", "trashheap", "woodsbanner", "campfire", "lanternstring", "mushroomring"],
+        "obstacles": ["stump", "rock", "pine"],
+        "dark": 0.55
+      },
+      "intro": "Raccoons have barricaded the woods. Raid their two outposts, then storm the Raccoon Den.",
+      "decor": [
+        { "kind": "raccoontent", "x": -6, "z": 10 },
+        { "kind": "trashheap", "x": -2.3, "z": 10.4 },
+        { "kind": "raccoontent", "x": 6.2, "z": 12.4 },
+        { "kind": "trashheap", "x": 2, "z": 13.2 },
+        { "kind": "trashheap", "x": -2.4, "z": 16.4 },
+        { "kind": "trashheap", "x": 2.5, "z": 16.6 },
+        { "kind": "fence", "x": -3, "z": 18.6 },
+        { "kind": "fence", "x": 3, "z": 18.6 },
+        { "kind": "fence", "x": -4.2, "z": 17 },
+        { "kind": "woodsbanner", "x": -5.6, "z": 11.6 },
+        { "kind": "woodsbanner", "x": 5.4, "z": 14.6 },
+        { "kind": "woodsbanner", "x": -1.6, "z": 18.2 },
+        { "kind": "woodsbanner", "x": 1.6, "z": 18.2 },
+        { "kind": "campfire", "x": -2.8, "z": 14.2, "active": "night" },
+        { "kind": "lanternstring", "x": -6.6, "z": 16.2, "active": "night" },
+        { "kind": "mushroomring", "x": 6.8, "z": 9.6, "active": "night" },
+        { "kind": "map-signpost", "x": 5.8, "z": 9.2, "active": "sometimes" },
+        { "kind": "map-pines", "x": -8.5, "z": 9.6, "active": "wild" },
+        { "kind": "map-pines", "x": 8.4, "z": 11, "active": "wild" },
+        { "kind": "map-pines", "x": -8.8, "z": 14.5, "active": "wild" },
+        { "kind": "map-pines", "x": -7.6, "z": 18.6, "active": "wild" },
+        { "kind": "map-pines", "x": 7.2, "z": 9.2, "active": "wild" }
+      ],
+      "ambient": [
+        { "kind": "sparrow", "x": -3, "z": 12.6 },
+        { "kind": "sparrow", "x": 3.4, "z": 10.6 },
+        { "kind": "butterfly", "x": 6.8, "z": 9.6 },
+        { "kind": "frog", "x": -7.6, "z": 13.6 },
+        { "kind": "firefly", "x": -1, "z": 13 },
+        { "kind": "firefly", "x": 4, "z": 16 },
+        { "kind": "firefly", "x": -5, "z": 15 },
+        { "kind": "firefly", "x": 6, "z": 10.5 },
+        { "kind": "firefly", "x": -6, "z": 9.5 }
+      ],
+      "arenaDecor": [
+        { "kind": "pine", "x": -9.6, "z": -8.7 },
+        { "kind": "oak", "x": -7.1, "z": -8.7 },
+        { "kind": "pine", "x": -2, "z": -8.7 },
+        { "kind": "raccoontent", "x": 2.75, "z": -8.7 },
+        { "kind": "pine", "x": 7.85, "z": -8.7 },
+        { "kind": "trashheap", "x": 9.6, "z": -8.7 },
+        { "kind": "oak", "x": -11.1, "z": -4.2 },
+        { "kind": "woodsbanner", "x": 12, "z": -4.2 },
+        { "kind": "pine", "x": -11.25, "z": -1.2 },
+        { "kind": "campfire", "x": 11.85, "z": -1.2 },
+        { "kind": "oak", "x": -11.4, "z": 1.8 },
+        { "kind": "lanternstring", "x": 11.7, "z": 1.8 },
+        { "kind": "pine", "x": -10.8, "z": 4.6 },
+        { "kind": "trashheap", "x": 11.55, "z": 4.6 },
+        { "kind": "mushroomring", "x": -11.15, "z": -8.3 },
+        { "kind": "pine", "x": 11.6, "z": -8.3 }
+      ],
+      "enemies": ["binrat", "slinger", "shield", "squirrel"],
+      "boss": "rummage",
+      "specials": ["wickling", "bonerat", "bellbat", "digger", "gloom"],
+      "market": ["nightberry"],
+      "secrets": [
+        { "id": "woods-chest", "kind": "chest", "x": -8.5, "z": 16, "coin": 40 },
+        { "id": "woods-berries", "kind": "patch", "x": 8.5, "z": 10.5, "item": "nightberry", "n": 2 },
+        { "id": "woods-lostcat", "kind": "lostcat", "x": 8.5, "z": 13.5, "cat": "Bramble" }
+      ],
+      "nodes": [
+        {
+          "id": "woods-1",
+          "kind": "battle",
+          "name": "the Bin Barricade",
+          "x": -4,
+          "z": 11,
+          "layers": [
+            ["fight"],
+            ["fight"]
+          ]
+        },
+        {
+          "id": "woods-2",
+          "kind": "battle",
+          "name": "the Acorn Lookout",
+          "x": 4,
+          "z": 14,
+          "layers": [
+            ["fight"],
+            ["elite"]
+          ]
+        },
+        {
+          "id": "woods-boss",
+          "kind": "boss",
+          "name": "the Raccoon Den",
+          "x": 0,
+          "z": 17,
+          "layers": [
+            ["fight"],
+            ["fight", "elite"],
+            ["treasure", "rest"],
+            ["fight", "elite"],
+            ["treasure"],
+            ["rest", "fight"],
+            ["boss"]
+          ]
+        },
+        { "id": "woods-lot", "kind": "lot", "x": 7, "z": 16 }
+      ]
+    },
+    {
+      "id": "village",
+      "name": "Purrgatory village",
+      "critter": "dogs",
+      "z": [20, 32],
+      "tiles": { "held": "cobbles", "won": "flagmoss" },
+      "flag": "#4a6fa8",
+      "scenery": ["cottage", "cottage", "oak", "picketfence", "doghouse"],
+      "room": {
+        "floor": ["cobbles", "flagcracked"],
+        "edge": "flagmoss",
+        "out": "grass",
+        "border": ["cottage", "picketfence", "oak"],
+        "low": ["picketfence", "crate", "foodbowl"],
+        "fill": ["cottage", "oak", "cottage"],
+        "decor": ["doghouse", "bonepile", "laundryline", "dogbanner", "foodbowl"],
+        "obstacles": ["crate", "barrel", "stump"],
+        "dark": 0.6
+      },
+      "enemies": ["pup", "hound", "bulldog"],
+      "boss": "barkley",
+      "market": [],
+      "secrets": [
+        { "id": "village-chest", "kind": "chest", "x": 8.5, "z": 27, "coin": 60 },
+        { "id": "village-catnip", "kind": "patch", "x": -8.5, "z": 22.5, "item": "catnip", "n": 2 },
+        { "id": "village-lostcat", "kind": "lostcat", "x": -2, "z": 23, "cat": "Muffin" }
+      ],
+      "nodes": [
+        {
+          "id": "village-1",
+          "kind": "battle",
+          "x": 4,
+          "z": 23,
+          "name": "the Kennel Gate",
+          "layers": [
+            ["fight"],
+            ["fight"]
+          ]
+        },
+        {
+          "id": "village-2",
+          "kind": "battle",
+          "x": -5,
+          "z": 26,
+          "name": "the Butcher's Yard",
+          "layers": [
+            ["fight"],
+            ["elite", "fight"]
+          ]
+        },
+        {
+          "id": "village-boss",
+          "kind": "boss",
+          "x": 1,
+          "z": 29,
+          "name": "Barkley's Doghouse",
+          "layers": [
+            ["fight"],
+            ["fight", "elite"],
+            ["treasure", "rest"],
+            ["elite", "fight"],
+            ["treasure"],
+            ["rest", "fight"],
+            ["boss"]
+          ]
+        },
+        { "id": "village-lot", "kind": "lot", "x": -7, "z": 29 }
+      ],
+      "decor": [
+        { "kind": "map-signpost", "x": 1, "z": 21.2, "active": "sometimes" },
+        { "kind": "dogbanner", "x": -8.3, "z": 22.5, "active": "wild" },
+        { "kind": "doghouse", "x": 8.2, "z": 24.5, "active": "wild" },
+        { "kind": "bonepile", "x": 8.6, "z": 30.4, "active": "wild" }
+      ],
+      "specials": ["bonerat", "gloom"],
+      "intro": "The dogs have the run of Purrgatory. Raid the Kennel Gate and the Butcher's Yard, then storm Barkley's Doghouse."
+    },
+    {
+      "id": "fields",
+      "name": "Squeakmoor fields",
+      "critter": "mice and rats",
+      "z": [32, 44],
+      "tiles": { "held": "pebbles", "won": "flowers" },
+      "flag": "#e9c86a",
+      "scenery": ["haystack", "haystack", "scarecrow", "oak", "rock"],
+      "room": {
+        "floor": ["pebbles", "path"],
+        "edge": "flowers",
+        "out": "grass",
+        "border": ["haystack", "oak", "haystack"],
+        "low": ["grainsacks", "rock"],
+        "fill": ["haystack", "oak", "windmill"],
+        "decor": ["scarecrow", "grainsacks", "windmill"],
+        "obstacles": ["haystack", "grainsacks", "rock"],
+        "dark": 0.65
+      },
+      "enemies": ["mouse", "rat", "mole"],
+      "boss": "baron",
+      "market": [],
+      "secrets": [
+        { "id": "fields-chest", "kind": "chest", "x": -8.5, "z": 39, "coin": 80 },
+        { "id": "fields-catnip", "kind": "patch", "x": 8.5, "z": 35, "item": "catnip", "n": 3 },
+        { "id": "fields-lostcat", "kind": "lostcat", "x": 2, "z": 36, "cat": "Tater" }
+      ],
+      "nodes": [
+        {
+          "id": "fields-1",
+          "kind": "battle",
+          "x": -3,
+          "z": 35,
+          "name": "the Grain Store",
+          "layers": [
+            ["fight"],
+            ["fight", "elite"]
+          ]
+        },
+        {
+          "id": "fields-2",
+          "kind": "battle",
+          "x": 5,
+          "z": 38,
+          "name": "the Scarecrow Line",
+          "layers": [
+            ["fight"],
+            ["elite"],
+            ["fight"]
+          ]
+        },
+        {
+          "id": "fields-boss",
+          "kind": "boss",
+          "x": -1,
+          "z": 41,
+          "name": "the Baron's Burrow",
+          "layers": [
+            ["fight"],
+            ["fight", "elite"],
+            ["treasure", "rest"],
+            ["fight", "elite"],
+            ["treasure", "rest"],
+            ["elite", "fight"],
+            ["rest"],
+            ["boss"]
+          ]
+        },
+        { "id": "fields-lot", "kind": "lot", "x": 7, "z": 41 }
+      ],
+      "decor": [
+        { "kind": "map-signpost", "x": -0.1, "z": 33.2, "active": "sometimes" },
+        { "kind": "windmill", "x": -8.4, "z": 35.4, "active": "sometimes" },
+        { "kind": "scarecrow", "x": 8.4, "z": 34.2, "active": "wild" },
+        { "kind": "grainsacks", "x": -8.6, "z": 40.6, "active": "sometimes" }
+      ],
+      "specials": ["digger", "bonerat"],
+      "intro": "Rats run Squeakmoor. Raid the Grain Store and the Scarecrow Line, then storm the Baron's Burrow — he comes up from under you."
+    },
+    {
+      "id": "fens",
+      "name": "Croaking Fens",
+      "critter": "frogs and toads",
+      "z": [44, 56],
+      "tiles": { "held": "mud", "won": "grass" },
+      "flag": "#4f8f43",
+      "scenery": ["reeds", "reeds", "deadtree", "rock"],
+      "room": {
+        "floor": ["mud", "grass"],
+        "edge": "mud",
+        "out": "flagwet",
+        "border": ["reeds", "deadtree", "reeds"],
+        "low": ["reeds", "rock"],
+        "fill": ["deadtree", "reeds"],
+        "decor": ["lilypond", "jetty", "lilypond"],
+        "obstacles": ["rock", "stump", "deadtree"],
+        "dark": 0.5
+      },
+      "enemies": ["frog", "toad", "newt"],
+      "boss": "toadstool",
+      "market": [],
+      "secrets": [
+        { "id": "fens-chest", "kind": "chest", "x": 8.5, "z": 51, "coin": 100 },
+        { "id": "fens-berries", "kind": "patch", "x": -8.5, "z": 47, "item": "nightberry", "n": 3 },
+        { "id": "fens-lostcat", "kind": "lostcat", "x": 7.5, "z": 47.5, "cat": "Mossy" }
+      ],
+      "nodes": [
+        {
+          "id": "fens-1",
+          "kind": "battle",
+          "x": 4,
+          "z": 47,
+          "name": "the Lily Landing",
+          "layers": [
+            ["fight"],
+            ["fight", "elite"]
+          ]
+        },
+        {
+          "id": "fens-2",
+          "kind": "battle",
+          "x": -4,
+          "z": 50,
+          "name": "the Reed Beds",
+          "layers": [
+            ["fight"],
+            ["elite", "fight"],
+            ["fight"]
+          ]
+        },
+        {
+          "id": "fens-boss",
+          "kind": "boss",
+          "x": 0,
+          "z": 53,
+          "name": "Old Toadstool's Pond",
+          "layers": [
+            ["fight"],
+            ["fight", "elite"],
+            ["treasure", "rest"],
+            ["elite", "fight"],
+            ["treasure"],
+            ["rest", "fight"],
+            ["elite"],
+            ["boss"]
+          ]
+        },
+        { "id": "fens-lot", "kind": "lot", "x": -7, "z": 53 }
+      ],
+      "decor": [
+        { "kind": "map-signpost", "x": 1, "z": 45.2, "active": "sometimes" },
+        { "kind": "map-bridge", "x": 2.9, "z": 50.7, "active": "sometimes" },
+        { "kind": "lilypond", "x": -8.2, "z": 46.2, "active": "sometimes" },
+        { "kind": "jetty", "x": 8.4, "z": 49.4, "active": "sometimes" },
+        { "kind": "lilypond", "x": 8.6, "z": 54.2, "active": "sometimes" }
+      ],
+      "specials": ["gloom", "wickling"],
+      "intro": "Toads croak over the fens. Raid the Lily Landing and the Reed Beds, then storm Old Toadstool's Pond — watch where he lands."
+    },
+    {
+      "id": "harbour",
+      "name": "Gullport harbour",
+      "critter": "seagulls and crabs",
+      "z": [56, 68],
+      "tiles": { "held": "flagwet", "won": "flagcracked" },
+      "flag": "#f3e6cf",
+      "scenery": ["crates", "crates", "boat", "rock"],
+      "room": {
+        "floor": ["flagwet", "flagcracked"],
+        "edge": "pebbles",
+        "out": "flagwet",
+        "border": ["crates", "boat", "crates"],
+        "low": ["ropecoils", "crate"],
+        "fill": ["boat", "crates"],
+        "decor": ["lighthouse", "ropecoils", "boat"],
+        "obstacles": ["crate", "barrel", "rock"],
+        "dark": 0.55
+      },
+      "enemies": ["gull", "crab", "pelican"],
+      "boss": "gullbert",
+      "market": [],
+      "secrets": [
+        { "id": "harbour-chest", "kind": "chest", "x": -8.5, "z": 66, "coin": 140 },
+        { "id": "harbour-fish", "kind": "patch", "x": -8.5, "z": 62.5, "item": "fish", "n": 4 },
+        { "id": "harbour-lostcat", "kind": "lostcat", "x": 8, "z": 59, "cat": "Salty" }
+      ],
+      "nodes": [
+        {
+          "id": "harbour-1",
+          "kind": "battle",
+          "x": -4,
+          "z": 59,
+          "name": "the Fish Market",
+          "layers": [
+            ["fight"],
+            ["fight", "elite"],
+            ["fight"]
+          ]
+        },
+        {
+          "id": "harbour-2",
+          "kind": "battle",
+          "x": 4,
+          "z": 62,
+          "name": "the Jetty",
+          "layers": [
+            ["fight"],
+            ["elite", "fight"],
+            ["elite"],
+            ["fight"]
+          ]
+        },
+        {
+          "id": "harbour-boss",
+          "kind": "boss",
+          "x": 0,
+          "z": 66,
+          "name": "Gullbert's Lighthouse",
+          "layers": [
+            ["fight"],
+            ["fight", "elite"],
+            ["treasure", "rest"],
+            ["elite", "fight"],
+            ["treasure", "rest"],
+            ["elite", "fight"],
+            ["rest"],
+            ["elite"],
+            ["boss"]
+          ]
+        },
+        { "id": "harbour-lot", "kind": "lot", "x": 7, "z": 66 }
+      ],
+      "decor": [
+        { "kind": "map-signpost", "x": 1.9, "z": 57.2, "active": "sometimes" },
+        { "kind": "lighthouse", "x": -8.6, "z": 58.4, "active": "sometimes" },
+        { "kind": "ropecoils", "x": 8.4, "z": 60.2, "active": "sometimes" },
+        { "kind": "boat", "x": -8.4, "z": 64.6, "active": "sometimes" }
+      ],
+      "specials": ["bellbat", "wickling"],
+      "intro": "Gulls rule Gullport. Raid the Fish Market and the Jetty, then storm Captain Gullbert's Lighthouse — he strikes from above."
+    }
+  ]
+}

@@ -1,0 +1,407 @@
+{
+  "_comment": "A fight from the conquest map, run like a Cult of the Lamb dungeon: layers of rooms, each a shape (shapes: a union of circles {c: [x, z, r]} and rectangles {r: [x, z, w, h]} centred on 0,0; shapeFor picks one per room kind; roomW x roomH is the old box, kept for hand-made layouts without a shape). You come in on one side; once the room is done, a door per room of the next layer opens on the other sides (north first, then west/east) and you walk a corridor (corridor tiles) into the next room, laid out beside the last. Room kinds: fight, elite (a shield-bearer plus tougher critters), treasure (pick one of two blessings for the rest of the run), rest (a campfire heals), boss; after the last layer an exit door ends the run. ai: chase (winds up and lunges to bite: bite.*), ranged (keeps its distance, winds up, shoots), shield (blocks claws from the front, winds up a lunge, then is exposed), boss (charge, bag volley, whistles for help at summonAt hp fractions). size = billboard width in tiles (default 1.6). Night: every critter +1 hp, one more pickup per room. Speeds in tiles/s, times in seconds. Roll: chain up to three (press again within roll.chainWindow after one ends); the third is a long pounce (roll.third) followed by roll.cooldown. A shield turns at shield.turnRate rad/s and not at all while staggered or attacking; a claw from behind does +1 and staggers it for shield.staggerSec. Your claw: a 3-hit combo, the third a heavy hit (attack.heavy adds damage, knockback, a longer lunge and recovery); every landed hit freezes the action for attack.hitStop seconds (light, heavy). Specials (crypt critters, regions.json specials): one may join a fight room from specials.fromLayer on (chance, eliteChance). wisp = wickling (keeps away, homing flame, blinks every blinkEvery hits), bones = bone rat (chase; first knock-out leaves a pile for bones.downSec that one hit smashes, else it stands up), swoop = bell bat (orbits, rings, dives through), burrow = digger (claws can't reach the mound; it rumbles, bursts up hurting within burrow.reach, then sits dazed), gloom (slow, goo slows you to gloom.gooSlow, slam hits within gloom.reach, splits into two gloomlets). fly: ignores stumps. pickupReach: walk this close to loot to grab it. cardReach: stand this close to a blessing card to read it (E takes it, Esc leaves it). layoutChance: how often a fight/elite room uses one of the region's hand-made layouts (data/rooms.json, made with the level editor) when it has any; a boss room always does. Boss moves (enemies.<boss>.moves, cycled in order; default charge, volley): charge (runs you down, dazed on a wall), volley (a spread of bags), slam (howls/plunges: hurts within boss.slamReach after boss.slamWindup, then rests boss.slamRecover), hop (leaps to where you stood, lands with a slam and a goo puddle), burrow (tunnels under you for boss.burrowSec, unclawable, rumbles boss.burrowWindup, bursts up within slamReach).",
+  "roomW": 16,
+  "roomH": 11,
+  "hp": 5,
+  "speed": 6,
+  "attack": {
+    "range": 1.7,
+    "cooldown": 0.3,
+    "knockback": 2.5,
+    "lunge": 5,
+    "comboWindow": 0.8,
+    "heavy": { "damage": 1, "knockback": 1.7, "cooldown": 0.55, "lunge": 9 },
+    "hitStop": [0.06, 0.11]
+  },
+  "roll": {
+    "time": 0.26,
+    "speed": 14,
+    "chainWindow": 0.35,
+    "chainCool": 0.08,
+    "cooldown": 0.75,
+    "third": { "time": 0.4, "speed": 16, "invulnExtra": 0.15 }
+  },
+  "hurt": { "invulnSec": 0.8, "knockback": 2 },
+  "obstacles": {
+    "fight": [2, 5],
+    "elite": [2, 4],
+    "boss": [2, 2],
+    "kinds": ["stump", "rock", "pine"]
+  },
+  "ranged": {
+    "keepAway": [3.5, 6.5],
+    "windup": 0.6,
+    "cooldown": 1.4,
+    "shotSpeed": 8,
+    "shotLife": 1.6
+  },
+  "shield": { "approach": 2.6, "windup": 0.6, "lungeSpeed": 9, "lungeSec": 0.35, "exposedSec": 1, "cooldown": 1.2, "turnRate": 2.2, "staggerSec": 0.7 },
+  "boss": {
+    "pause": 0.8,
+    "chargeWindup": 0.9,
+    "chargeSpeed": 13,
+    "chargeSec": 1.6,
+    "stunSec": 1.6,
+    "volleyWindup": 0.7,
+    "volley": 5,
+    "volleySpread": 0.3,
+    "bagSpeed": 6,
+    "bagLife": 2.4,
+    "summonAt": [0.66, 0.33],
+    "summon": 3,
+    "slamWindup": 1,
+    "slamReach": 2.6,
+    "slamRecover": 1.5,
+    "hopSpeed": 14,
+    "hopSec": 0.7,
+    "burrowSec": 1.8,
+    "burrowSpeed": 5,
+    "burrowWindup": 0.6
+  },
+  "rest": { "heal": 2 },
+  "blessings": {
+    "sharp": { "label": "Sharp Claws", "text": "claws hit twice as hard" },
+    "fleet": { "label": "Fleet Paws", "text": "roll twice as often" },
+    "heart": { "label": "Catnip Heart", "text": "+1 heart, and heal 1" },
+    "lucky": { "label": "Lucky Whiskers", "text": "every critter drops a coin too" }
+  },
+  "enemies": {
+    "binrat": {
+      "hp": 3,
+      "speed": 3,
+      "damageCooldown": 1,
+      "drops": ["coin", "fish", "nightberry"],
+      "ai": "chase"
+    },
+    "slinger": {
+      "hp": 2,
+      "speed": 3.8,
+      "damageCooldown": 1.2,
+      "drops": ["coin", "nightberry"],
+      "ai": "ranged"
+    },
+    "shield": {
+      "hp": 5,
+      "speed": 2.2,
+      "damageCooldown": 0.9,
+      "drops": ["coin", "fish"],
+      "ai": "shield"
+    },
+    "squirrel": {
+      "hp": 1,
+      "speed": 4.6,
+      "damageCooldown": 1,
+      "drops": ["coin", "heart"],
+      "ai": "chase"
+    },
+    "rummage": {
+      "hp": 32,
+      "speed": 2.4,
+      "damageCooldown": 0.8,
+      "drops": ["coin", "coin", "nightberry", "fish"],
+      "size": 3.2,
+      "dropCount": 6,
+      "ai": "boss",
+      "moves": ["charge", "volley"]
+    },
+    "pup": {
+      "hp": 2,
+      "speed": 3.6,
+      "damageCooldown": 1,
+      "drops": ["coin", "fish"],
+      "ai": "chase"
+    },
+    "hound": {
+      "hp": 3,
+      "speed": 4.4,
+      "damageCooldown": 0.9,
+      "drops": ["coin", "heart"],
+      "ai": "ranged"
+    },
+    "bulldog": {
+      "hp": 5,
+      "speed": 2.4,
+      "damageCooldown": 0.9,
+      "drops": ["coin", "fish"],
+      "ai": "shield"
+    },
+    "barkley": {
+      "hp": 24,
+      "speed": 2.8,
+      "damageCooldown": 0.8,
+      "drops": ["coin", "coin", "fish"],
+      "size": 3.2,
+      "dropCount": 7,
+      "ai": "boss",
+      "moves": ["charge", "slam"]
+    },
+    "mouse": {
+      "hp": 1,
+      "speed": 4.8,
+      "damageCooldown": 1,
+      "drops": ["coin", "catnip"],
+      "ai": "chase"
+    },
+    "rat": {
+      "hp": 4,
+      "speed": 4.2,
+      "damageCooldown": 0.8,
+      "drops": ["coin", "fish"],
+      "ai": "chase"
+    },
+    "mole": {
+      "hp": 4,
+      "speed": 2.6,
+      "damageCooldown": 0.9,
+      "drops": ["coin", "heart"],
+      "ai": "burrow"
+    },
+    "baron": {
+      "hp": 32,
+      "speed": 3,
+      "damageCooldown": 0.8,
+      "drops": ["coin", "coin", "catnip"],
+      "size": 3.2,
+      "dropCount": 8,
+      "ai": "boss",
+      "moves": ["burrow", "volley"]
+    },
+    "frog": {
+      "hp": 2,
+      "speed": 4,
+      "damageCooldown": 1,
+      "drops": ["coin", "catnip"],
+      "ai": "chase"
+    },
+    "toad": {
+      "hp": 5,
+      "speed": 2.2,
+      "damageCooldown": 0.9,
+      "drops": ["coin", "fish"],
+      "ai": "ranged"
+    },
+    "newt": {
+      "hp": 2,
+      "speed": 4.6,
+      "damageCooldown": 1,
+      "drops": ["coin", "heart"],
+      "ai": "chase"
+    },
+    "toadstool": {
+      "hp": 32,
+      "speed": 2.6,
+      "damageCooldown": 0.8,
+      "drops": ["coin", "coin", "catnip"],
+      "size": 3.4,
+      "dropCount": 8,
+      "ai": "boss",
+      "moves": ["hop", "volley"]
+    },
+    "gull": {
+      "hp": 2,
+      "speed": 5,
+      "damageCooldown": 1,
+      "drops": ["coin", "fish"],
+      "ai": "swoop",
+      "fly": true
+    },
+    "crab": {
+      "hp": 6,
+      "speed": 2,
+      "damageCooldown": 0.9,
+      "drops": ["coin", "fish"],
+      "ai": "shield"
+    },
+    "pelican": {
+      "hp": 4,
+      "speed": 3.4,
+      "damageCooldown": 0.9,
+      "drops": ["coin", "fish", "heart"],
+      "ai": "ranged"
+    },
+    "gullbert": {
+      "hp": 32,
+      "speed": 3.2,
+      "damageCooldown": 0.8,
+      "drops": ["coin", "coin", "fish", "fish"],
+      "size": 3.6,
+      "dropCount": 10,
+      "ai": "boss",
+      "moves": ["charge", "volley", "slam"],
+      "fly": true
+    },
+    "wickling": {
+      "hp": 5,
+      "speed": 2.2,
+      "damageCooldown": 1,
+      "drops": ["coin", "coin", "catnip"],
+      "size": 1.5,
+      "ai": "wisp",
+      "fly": true,
+      "special": "A wickling! It snuffs out and relights when hit — and its flames follow you"
+    },
+    "bonerat": {
+      "hp": 3,
+      "speed": 4.4,
+      "damageCooldown": 0.9,
+      "drops": ["coin", "coin", "fish"],
+      "size": 1.4,
+      "ai": "bones",
+      "special": "A bone rat! Knock it down, then smash the pile before it pulls itself together"
+    },
+    "bellbat": {
+      "hp": 3,
+      "speed": 3.4,
+      "damageCooldown": 0.9,
+      "drops": ["coin", "coin", "nightberry"],
+      "size": 1.6,
+      "ai": "swoop",
+      "fly": true,
+      "special": "A bell bat! When it rings, it dives — roll aside, then claw it while it's dizzy"
+    },
+    "digger": {
+      "hp": 5,
+      "speed": 3,
+      "damageCooldown": 0.9,
+      "drops": ["coin", "coin", "heart"],
+      "size": 1.6,
+      "ai": "burrow",
+      "special": "A digger! Keep moving when the ground rumbles, then strike while it's dazed"
+    },
+    "gloom": {
+      "hp": 9,
+      "speed": 1.4,
+      "damageCooldown": 0.9,
+      "drops": ["coin", "coin", "coin", "nightberry"],
+      "size": 2,
+      "dropCount": 2,
+      "ai": "gloom",
+      "special": "A gloom! Its goo slows you, its slam hits all round — and it splits when it bursts"
+    },
+    "gloomlet": {
+      "hp": 2,
+      "speed": 3.4,
+      "damageCooldown": 1,
+      "drops": ["coin"],
+      "size": 1.1,
+      "ai": "chase"
+    }
+  },
+  "pickupsPerRoom": [1, 3],
+  "floorLoot": ["fish", "fish", "catnip", "nightberry", "coin", "coin", "coin"],
+  "bite": { "range": 1.7, "windup": 0.45, "lungeSpeed": 8, "lungeSec": 0.2, "recoverSec": 0.5, "cooldown": 1.1 },
+  "specials": { "chance": 0.3, "eliteChance": 0.6, "fromLayer": 1 },
+  "wisp": {
+    "keepAway": [4, 6.5],
+    "windup": 0.8,
+    "cooldown": 2.4,
+    "shotSpeed": 4.5,
+    "shotLife": 3.2,
+    "homing": 1.6,
+    "blinkEvery": 2
+  },
+  "swoop": { "orbit": 4, "windup": 0.7, "diveSpeed": 11, "diveSec": 0.6, "recoverSec": 0.9, "cooldown": 1.8 },
+  "burrow": { "windup": 0.7, "exposedSec": 1.6, "cooldown": 1, "reach": 1.2 },
+  "bones": { "downSec": 3 },
+  "gloom": { "reach": 1.9, "windup": 0.9, "recoverSec": 0.9, "cooldown": 2.2, "gooEvery": 1.2, "gooR": 0.9, "gooLife": 5, "gooSlow": 0.55 },
+  "pickupReach": 1,
+  "cardReach": 1.6,
+  "layoutChance": 0.6,
+  "shapes": {
+    "box": [
+      {
+        "r": [0, 0, 16, 11]
+      }
+    ],
+    "glade": [
+      {
+        "c": [0, 0, 6.2]
+      },
+      {
+        "c": [-4.4, 1.2, 4.2]
+      },
+      {
+        "c": [4.4, -0.8, 4.2]
+      }
+    ],
+    "bean": [
+      {
+        "c": [-3.6, -1.1, 5]
+      },
+      {
+        "c": [3.6, 1.1, 5]
+      },
+      {
+        "c": [0, 0, 4.8]
+      }
+    ],
+    "hollow": [
+      {
+        "c": [0, 0, 7]
+      }
+    ],
+    "long": [
+      {
+        "r": [0, 0, 10, 7]
+      },
+      {
+        "c": [-5, 0, 3.6]
+      },
+      {
+        "c": [5, 0, 3.6]
+      },
+      {
+        "c": [0, 0, 4.6]
+      }
+    ],
+    "cross": [
+      {
+        "r": [0, 0, 17, 6]
+      },
+      {
+        "r": [0, 0, 7, 12.5]
+      },
+      {
+        "c": [0, 0, 5]
+      }
+    ],
+    "clover": [
+      {
+        "c": [-3.6, 0.3, 4.4]
+      },
+      {
+        "c": [3.6, 0.3, 4.4]
+      },
+      {
+        "c": [0, -3, 4.4]
+      },
+      {
+        "c": [0, 3.3, 4.2]
+      }
+    ],
+    "nook": [
+      {
+        "c": [0, 0, 5]
+      },
+      {
+        "c": [0, 2.2, 3.6]
+      }
+    ],
+    "arena": [
+      {
+        "c": [0, 0, 7.6]
+      },
+      {
+        "r": [0, 0, 15, 8]
+      }
+    ]
+  },
+  "shapeFor": {
+    "fight": ["glade", "bean", "hollow", "long", "cross", "clover"],
+    "elite": ["glade", "hollow", "cross", "clover"],
+    "treasure": ["nook"],
+    "rest": ["nook"],
+    "boss": ["arena"]
+  },
+  "corridor": 4.5
+}

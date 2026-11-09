@@ -1,0 +1,291 @@
+{
+ "_comment": "Fixed scenery of the castle forecourt, drawn from public/assets/castle.png. x/z are tile coords (grid-centred), scale multiplies the base castle scale. active: when the piece shows its second frame \u2014 night (after dusk), open (shop hours) or null (never). rock: sways on the beat like idle props (small things only; architecture stays put). props: animated scenery from public/assets/props/prop-<kind>.png (8 x 2: idle, active), scale x 2.25 world per cell, y lifts it (a chimney on the wall top); active: open, night, sometimes (a few seconds now and then) or null.",
+ "scale": 1.6,
+ "pieces": [
+  {
+   "kind": "castledoor",
+   "x": 0,
+   "z": -14,
+   "scale": 1.0,
+   "active": "night",
+   "rock": false
+  },
+  {
+   "kind": "castlewall",
+   "x": -3.4,
+   "z": -14,
+   "scale": 1.0,
+   "active": null,
+   "rock": false
+  },
+  {
+   "kind": "castlewall",
+   "x": -6.1,
+   "z": -14,
+   "scale": 1.0,
+   "active": null,
+   "rock": false
+  },
+  {
+   "kind": "castlewall",
+   "x": -8.8,
+   "z": -14,
+   "scale": 1.0,
+   "active": null,
+   "rock": false
+  },
+  {
+   "kind": "castlewall",
+   "x": -11.5,
+   "z": -14,
+   "scale": 1.0,
+   "active": null,
+   "rock": false
+  },
+  {
+   "kind": "castlewall",
+   "x": 3.4,
+   "z": -14,
+   "scale": 1.0,
+   "active": null,
+   "rock": false
+  },
+  {
+   "kind": "castlewall",
+   "x": 6.1,
+   "z": -14,
+   "scale": 1.0,
+   "active": null,
+   "rock": false
+  },
+  {
+   "kind": "castlewall",
+   "x": 8.8,
+   "z": -14,
+   "scale": 1.0,
+   "active": null,
+   "rock": false
+  },
+  {
+   "kind": "castlewall",
+   "x": 11.5,
+   "z": -14,
+   "scale": 1.0,
+   "active": null,
+   "rock": false
+  },
+  {
+   "kind": "castletower",
+   "x": -14.5,
+   "z": -13.5,
+   "scale": 1.0,
+   "active": "night",
+   "rock": false
+  },
+  {
+   "kind": "castletower",
+   "x": 14.5,
+   "z": -13.5,
+   "scale": 1.0,
+   "active": "night",
+   "rock": false
+  },
+  {
+   "kind": "gate",
+   "x": 2,
+   "z": 15,
+   "scale": 1.0,
+   "active": "open",
+   "rock": false
+  },
+  {
+   "kind": "lamppost",
+   "x": -2.6,
+   "z": -11.5,
+   "scale": 0.9,
+   "active": null,
+   "rock": true
+  },
+  {
+   "kind": "lamppost",
+   "x": 2.6,
+   "z": -11.5,
+   "scale": 0.9,
+   "active": null,
+   "rock": true
+  },
+  {
+   "kind": "lamppost",
+   "x": -0.6,
+   "z": 12.5,
+   "scale": 0.9,
+   "active": null,
+   "rock": true
+  },
+  {
+   "kind": "statue",
+   "x": -9,
+   "z": -10,
+   "scale": 0.9,
+   "active": "night",
+   "rock": false
+  },
+  {
+   "kind": "gravestones",
+   "x": -12,
+   "z": -8,
+   "scale": 0.8,
+   "active": "night",
+   "rock": false
+  },
+  {
+   "kind": "well",
+   "x": 11,
+   "z": -9,
+   "scale": 0.8,
+   "active": null,
+   "rock": true
+  }
+ ],
+ "props": [
+  {
+   "kind": "bunting",
+   "x": -5.2,
+   "z": -12.4,
+   "scale": 1.15,
+   "y": 1.5,
+   "active": "open"
+  },
+  {
+   "kind": "bunting",
+   "x": 5.2,
+   "z": -12.4,
+   "scale": 1.15,
+   "y": 1.5,
+   "active": "open"
+  },
+  {
+   "kind": "chimney",
+   "x": -8.8,
+   "z": -14.5,
+   "scale": 0.8,
+   "y": 3.3,
+   "active": "open"
+  },
+  {
+   "kind": "chimney",
+   "x": 8.8,
+   "z": -14.5,
+   "scale": 0.8,
+   "y": 3.3,
+   "active": "open"
+  },
+  {
+   "kind": "flowerbox",
+   "x": 4.8,
+   "z": -9.4,
+   "scale": 0.7,
+   "active": "sometimes"
+  },
+  {
+   "kind": "flowerbox",
+   "x": 9.4,
+   "z": -1.4,
+   "scale": 0.7,
+   "active": "sometimes"
+  },
+  {
+   "kind": "flowerbox",
+   "x": -5.4,
+   "z": -9.4,
+   "scale": 0.7,
+   "active": "sometimes"
+  },
+  {
+   "kind": "fishpond",
+   "x": 7,
+   "z": -5.2,
+   "scale": 1.25,
+   "active": "sometimes"
+  },
+  {
+   "kind": "weathervane",
+   "x": -12.6,
+   "z": -3.6,
+   "scale": 0.9,
+   "active": "sometimes"
+  }
+ ],
+ "ambient": [
+  {
+   "kind": "pigeon",
+   "x": -1,
+   "z": -4
+  },
+  {
+   "kind": "pigeon",
+   "x": 2.5,
+   "z": 1.5
+  },
+  {
+   "kind": "pigeon",
+   "x": -4,
+   "z": 2
+  },
+  {
+   "kind": "sparrow",
+   "x": 6,
+   "z": -8
+  },
+  {
+   "kind": "sparrow",
+   "x": 9,
+   "z": -3
+  },
+  {
+   "kind": "butterfly",
+   "x": 4.8,
+   "z": -9.4
+  },
+  {
+   "kind": "butterfly",
+   "x": 9.4,
+   "z": -1.4
+  },
+  {
+   "kind": "butterfly",
+   "x": -5.4,
+   "z": -9.4
+  },
+  {
+   "kind": "frog",
+   "x": 8.6,
+   "z": -4.2
+  },
+  {
+   "kind": "sleepycat",
+   "x": -12.4,
+   "z": 1.6
+  },
+  {
+   "kind": "firefly",
+   "x": 6,
+   "z": -6
+  },
+  {
+   "kind": "firefly",
+   "x": 8,
+   "z": -2
+  },
+  {
+   "kind": "firefly",
+   "x": -6,
+   "z": -8
+  },
+  {
+   "kind": "firefly",
+   "x": -10,
+   "z": -2
+  }
+ ]
+}

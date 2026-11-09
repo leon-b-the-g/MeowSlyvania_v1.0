@@ -1,0 +1,8 @@
+{
+  "realSecondsPerDay": 540,
+  "dawn": 6,
+  "warningBell": 9,
+  "shopOpen": 10,
+  "dusk": 18,
+  "festivalEvery": 7
+}

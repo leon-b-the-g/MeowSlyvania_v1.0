@@ -1,0 +1,148 @@
+{
+  "_comment": "Keys are KeyboardEvent.key lower-cased. Buttons/axes are standard-mapping gamepad indices (0=A,1=B,2=X,3=Y,4=LB,5=RB,6=LT,7=RT,8=Back,12-15=dpad. Spells 1-4 sit on LB/RB/LT/RT in battle (LB is the household panel in the caf\u00e9)). tab (Tab/RB): next machine in build mode, next page in the skill book. teach (T/Start): show and tell with the servant picked in the household panel. undo (X/Backspace/R3): take back a machine built this build session.",
+  "deadzone": 0.25,
+  "move": {
+    "up": [
+      "w",
+      "arrowup"
+    ],
+    "down": [
+      "s",
+      "arrowdown"
+    ],
+    "left": [
+      "a",
+      "arrowleft"
+    ],
+    "right": [
+      "d",
+      "arrowright"
+    ],
+    "axes": [
+      0,
+      1
+    ],
+    "dpad": {
+      "up": 12,
+      "down": 13,
+      "left": 14,
+      "right": 15
+    }
+  },
+  "actions": {
+    "use": {
+      "keys": [
+        "e",
+        " "
+      ],
+      "buttons": [
+        0
+      ]
+    },
+    "build": {
+      "keys": [
+        "q"
+      ],
+      "buttons": [
+        2
+      ]
+    },
+    "sleep": {
+      "keys": [
+        "enter"
+      ],
+      "buttons": [
+        3
+      ]
+    },
+    "tab": {
+      "keys": [
+        "tab"
+      ],
+      "buttons": [
+        5
+      ]
+    },
+    "sprint": {
+      "keys": [
+        "shift"
+      ],
+      "buttons": [
+        1
+      ]
+    },
+    "staff": {
+      "keys": [
+        "h"
+      ],
+      "buttons": [
+        4
+      ]
+    },
+    "skills": {
+      "keys": [
+        "k"
+      ],
+      "buttons": [
+        8
+      ]
+    },
+    "spell1": {
+      "keys": [
+        "1"
+      ],
+      "buttons": [
+        4
+      ]
+    },
+    "spell2": {
+      "keys": [
+        "2"
+      ],
+      "buttons": [
+        5
+      ]
+    },
+    "spell3": {
+      "keys": [
+        "3"
+      ],
+      "buttons": [
+        6
+      ]
+    },
+    "spell4": {
+      "keys": [
+        "4"
+      ],
+      "buttons": [
+        7
+      ]
+    },
+    "cancel": {
+      "keys": [
+        "escape"
+      ],
+      "buttons": [
+        1
+      ]
+    },
+    "teach": {
+      "keys": [
+        "t"
+      ],
+      "buttons": [
+        9
+      ]
+    },
+    "undo": {
+      "keys": [
+        "x",
+        "backspace"
+      ],
+      "buttons": [
+        11
+      ]
+    }
+  }
+}

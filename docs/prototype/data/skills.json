@@ -1,0 +1,27 @@
+{
+  "_comment": "The skill tree (K): Path of Exile style, a heart in the middle and arms reaching out. A node can be taken when the node it grows `from` is taken and you have a point. Points come from levels; levels from xp (critters knocked out give their max hp as xp; xpBase x level to the next). x/y place the node on the tree view (1 = one ring out; -y is north). Stats add up (maxHp hearts, clawDmg, heavyDmg on the third claw, maxBlood, bloodPerKill) or multiply (*Mul: rollCoolMul, coinMul, workMul). A spell node unlocks a spell for slots 1-4. Spells cost blood: battles start full, blood refills one every blood.regenSec and blood.perKill per knock-out. Spells ignore shields.",
+  "xpBase": 25,
+  "startPoints": 1,
+  "blood": { "max": 3, "regenSec": 6, "perKill": 1 },
+  "nodes": {
+    "heart": { "label": "Heart of the Night", "text": "Where every vampire cat begins.", "x": 0, "y": 0 },
+    "n1": { "label": "Thin Blood", "from": "heart", "x": 0, "y": -1, "text": "+2 max blood.", "stats": { "maxBlood": 2 } },
+    "n2": { "label": "Moonbeam", "from": "n1", "x": 0.45, "y": -2, "spell": "moonbeam" },
+    "n3": { "label": "Blood Moon", "from": "n2", "x": 0, "y": -3, "text": "Every knock-out gives back 1 more blood.", "stats": { "bloodPerKill": 1 } },
+    "e1": { "label": "Sharp Fangs", "from": "heart", "x": 1, "y": 0, "text": "+1 claw damage.", "stats": { "clawDmg": 1 } },
+    "e2": { "label": "Blood Frenzy", "from": "e1", "x": 2, "y": 0.45, "spell": "frenzy" },
+    "e3": { "label": "Rend", "from": "e2", "x": 3, "y": 0, "text": "+2 damage on the third, heavy claw.", "stats": { "heavyDmg": 2 } },
+    "s1": { "label": "Nine Lives", "from": "heart", "x": 0, "y": 1, "text": "+1 heart.", "stats": { "maxHp": 1 } },
+    "s2": { "label": "Shadow Step", "from": "s1", "x": -0.45, "y": 2, "spell": "shadowstep" },
+    "s3": { "label": "Mist Form", "from": "s2", "x": 0, "y": 3, "text": "Rolls and pounces come back 40% sooner.", "stats": { "rollCoolMul": 0.6 } },
+    "w1": { "label": "Silver Tongue", "from": "heart", "x": -1, "y": 0, "text": "Every cone sells for 20% more.", "stats": { "coinMul": 1.2 } },
+    "w2": { "label": "Bat Swarm", "from": "w1", "x": -2, "y": -0.45, "spell": "bats" },
+    "w3": { "label": "Night Shift", "from": "w2", "x": -3, "y": 0, "text": "Servants work 25% faster.", "stats": { "workMul": 1.25 } }
+  },
+  "spells": {
+    "moonbeam": { "label": "Moonbeam", "cost": 2, "cooldown": 2.5, "damage": 3, "length": 7, "width": 1, "text": "A beam of moonlight straight ahead: 3 damage to everything in the line." },
+    "frenzy": { "label": "Blood Frenzy", "cost": 3, "cooldown": 12, "duration": 6, "clawCoolMul": 0.5, "healEvery": 4, "text": "6 s of wild claws: twice as fast, and every 4th hit heals a heart." },
+    "shadowstep": { "label": "Shadow Step", "cost": 1, "cooldown": 3, "distance": 4.5, "damage": 2, "radius": 1.6, "invuln": 0.4, "text": "Blink 4.5 tiles ahead through anything, untouchable, and burst for 2 damage where you land." },
+    "bats": { "label": "Bat Swarm", "cost": 2, "cooldown": 6, "count": 3, "damage": 2, "speed": 7, "life": 4, "text": "Three bats hunt the nearest critters, 2 damage each." }
+  }
+}

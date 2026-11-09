@@ -1,0 +1,8 @@
+{
+  "_comment": "Tiles per second. Stamina is 0..1; sprint drains it in drainSec and it refills in regenSec while not sprinting.",
+  "speed": 6,
+  "sprintSpeed": 10.5,
+  "drainSec": 3,
+  "regenSec": 4,
+  "minToSprint": 0.15
+}

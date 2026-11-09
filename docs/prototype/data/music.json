@@ -1,0 +1,1 @@
+{ "_comment": "bpm drives every 8-frame prop loop (one loop = 2 beats, fps = bpm / 15) and the idle rock: a prop not in use rocks side to side once every rockBars bars, rockDeg each way.", "bpm": 112, "rockDeg": 3, "rockBars": 2 }

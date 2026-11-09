@@ -1,0 +1,52 @@
+{
+  "_comment": "Tile coords are grid-centred (0,0 = middle of the forecourt). Customers queue on queue[0..] in order; queue[0] is nearest the counter. Machines live in machines.json. An order may ask for sprinkles (\"<flavour>+sprinkles\"): shake them on at the sprinkle shaker; it pays extras.sprinkles more. Sprinkles on an order that didn't ask earn a small tip. Tier-2 extras: a velvet base (smokehouse -> velvet churn -> scoop) and a waffle wrap (waffle iron). Special customers (vip) come once you hold conquered land: they order specialities, wait patienceMul longer and pay priceMul more. Staff: servants walk at speed tiles/s, take slow x your hold time (fishing and baking: cycleSec x 0.5), earn 1 xp per sale or store drop-off, need xpPerLevel x level xp per level up to maxLevel, and follow level + 1 machines (stores are free). They rest at `rest`. From fixLevel they fix a jammed machine on their plan themselves (fixSec x slow).",
+  "spawnEverySec": 14,
+  "patienceSec": 50,
+  "perfectAbove": 0.5,
+  "maxQueue": 3,
+  "staff": { "speed": 3.5, "slow": 2, "xpPerLevel": 4, "maxLevel": 10, "fixLevel": 5, "rest": [0, -11] },
+  "favourToCatalyst": 5,
+  "holdSec": {
+    "churn": 1.2,
+    "counter": 0.9,
+    "topping": 0.6,
+    "bin": 0.5,
+    "smoker": 1.4,
+    "velvet": 1.4,
+    "waffle": 0.8
+  },
+  "queue": [
+    [
+      2,
+      9
+    ],
+    [
+      2,
+      11.5
+    ],
+    [
+      2,
+      14
+    ]
+  ],
+  "orders": [
+    "plain",
+    "plain",
+    "catnip",
+    "nightberry",
+    "plain+sprinkles",
+    "catnip+sprinkles"
+  ],
+  "prices": {
+    "plain": 10,
+    "catnip": 16,
+    "nightberry": 20
+  },
+  "extras": { "velvet": 14, "waffle": 10, "sprinkles": 6 },
+  "vip": {
+    "chance": 0.35,
+    "patienceMul": 1.6,
+    "priceMul": 1.5,
+    "orders": ["plain+velvet", "catnip+velvet", "plain+waffle", "nightberry+waffle", "catnip+velvet+waffle", "nightberry+velvet+waffle+sprinkles"]
+  }
+}
