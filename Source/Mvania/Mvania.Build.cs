@@ -27,6 +27,7 @@ public class Mvania : ModuleRules
 
 		PublicIncludePaths.AddRange(new string[] {
 			"Mvania",
+			"Mvania/Mw",
 			"Mvania/Variant_Strategy",
 			"Mvania/Variant_Strategy/UI",
 			"Mvania/Variant_TwinStick",
